@@ -1,0 +1,136 @@
+<p>template-deferrable-views works!</p>
+<hr>
+<!--
+    on - especifica uma condição de acionador usando um acionador da lista.
+    (idle, timer, viewport, interaction, hover, immediate, prefetch).
+    
+    idle	    Acionado quando o navegador está ocioso.
+    timer	    Aciona após uma duração específica
+    viewport	Aciona quando o conteúdo especificado entra na janela de visualização
+    interaction	Aciona quando o usuário interage com o elemento especificado
+    hover	    Aciona quando o mouse passa sobre uma área especificada
+    immediate	Aciona imediatamente após o conteúdo não adiado terminar de renderizar
+
+    when - especifica uma condição imperativa como uma expressão que retorna um booleano. 
+        Quando esta expressão se torna verdadeira, o espaço reservado é trocado pelo conteúdo carregado
+        lentamente (o que pode ser uma operação assíncrona se as dependencias precisarem ser buscadas).
+
+        Nota: Varios on triggers são sempre condições OR. Da mesma forma, on misturado com when também
+        são condições OR.
+-->
+
+<h2 #trigger2>Prefecth</h2>
+@defer(on interaction; prefetch on interaction(trigger2)) {
+    <app-new />
+} @placeholder { 
+    <p>Mostrar antes de carregar algo</p>
+} @loading {
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed</p>
+}
+
+<hr>
+        
+<h2>Immediate</h2>
+@defer(on immediate) {
+    <app-new />
+} @placeholder { 
+    <p>Mostrar antes de carregar algo</p>
+} @loading {
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed</p>
+}
+
+<hr>
+
+
+<h2>Timer</h2>
+@defer(on timer(5s)) {
+    <app-new />
+} @placeholder { 
+    <p>Mostrar antes de carregar algo</p>
+} @loading {
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed</p>
+}
+
+<hr>
+<h2 #trigger>Interaction</h2>
+@defer(on interaction(trigger)) {
+    <app-new />
+} @placeholder { 
+    <p>Mostrar antes de carregar algo</p>
+} @loading {
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed</p>
+}
+
+<hr>
+<h2 style="background-color: red; color: green;">Hover</h2>
+@defer(on hover) {
+    <app-new />
+} @placeholder { 
+    <p>Mostrar antes de carregar algo</p>
+} @loading {
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed</p>
+}
+
+<hr>
+<h2>When</h2>
+<button (click)="isTrue = true">set is true as true</button>
+
+@defer(when loadingData$ | async) {
+    <app-new />
+} @placeholder { 
+    <p>Mostrar antes de carregar algo</p>
+} @loading {
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed</p>
+}
+
+<hr>
+<h2 #trigger3>Minimum</h2>
+@defer() {
+    <app-new />
+} @placeholder(minimum 5s) { 
+    <p>Mostrar antes de carregar algo</p>
+} @loading {
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed</p>
+}
+
+
+<hr>
+<h2 #trigger4>After</h2>
+@defer(on interaction) {
+    <app-new />
+} @placeholder { 
+    <p>Mostrar antes de carregar algo</p>
+} @loading(after 150ms; minimum 5s){
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed</p>
+}
+
+
+<hr>
+<h2 style="margin-bottom: 500px;">Viewport</h2>
+
+@defer(on viewport) {
+    <app-new />
+} @placeholder { 
+    <p>Mostrar antes de carregar algo</p>
+} @loading {
+    <p>Loading...</p>
+} @error {
+    <p>Loading failed</p>
+}
+
