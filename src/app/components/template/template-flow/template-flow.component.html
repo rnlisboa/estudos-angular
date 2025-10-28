@@ -1,0 +1,47 @@
+<p>template-flow works!</p>
+
+<h3>IF</h3>
+
+@if(loadingData$ | async; as data){
+<ul>
+  @for(item of data; track item){
+  <li>item</li>
+  }
+</ul>
+} @else {
+<p>Carregando...</p>
+}
+
+<ul>
+  @for(item of loadingData$ | async; track item) {
+  <li>{{ item }}</li>
+  } @empty {
+  <li>Não tem itens!</li>
+  }
+</ul>
+
+@for ( item of itens; track item.name; let i = $index; let c = $count; let f =
+$first; let l = $last; let e = $even; let o = $odd; ) {
+<p>{{ item.name }}</p>
+<p>index - {{ i }}</p>
+<p>count - {{ c }}</p>
+<p>first - {{ f }}</p>
+<p>last - {{ l }}</p>
+<p>even - {{ e }}</p>
+<p>odd - {{ o }}</p>
+}
+
+<input type="text" #name />
+<button (click)="addName(name.value)">add name</button>
+
+@switch (switchCondition) { 
+    @case ('A') {
+    <p>Sua letra é A</p>
+    }   
+    @case ('B') {
+    <p>Sua letra é B</p>
+    } 
+    @default {
+        <p>Dados não encontrados</p>
+    }
+}
