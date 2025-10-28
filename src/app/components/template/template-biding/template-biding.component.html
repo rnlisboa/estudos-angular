@@ -1,0 +1,32 @@
+<p>template-biding works!</p>
+
+{{ name }} - {{ age }}
+
+<p> {{ condition }}</p>
+
+<hr/>
+
+<h2>PROTERTY binding</h2>
+<button [disabled]="isDisabled">Button</button>
+<img [src]="srcValue" [alt]="name"/>
+
+<hr/>
+
+<h2>ATRIBUTE binding</h2>
+<p [attr.title]="name" [attr.aria-label]="name">Teste 1</p>
+
+<hr/>
+
+<h2>CLASS AND STYLE binding</h2>
+<p [class.background-blue]="skyIsBlue">I'm sky</p>
+<P [style.text-decoration]="'underline'">{{ age }}</P>
+<p [style.text-decoration]="showdHaveUnderline">dinamic underline</p>
+
+<hr/>
+
+<h2>EVENT binding</h2>
+<button (click)="sum()">{{num}}</button>
+<div
+    style="background-color: red; height: 100px; width: 100px; margin-top: 50px;"
+    (mousemove)="onMouseMove($event)">    
+</div>
