@@ -1,0 +1,19 @@
+<h2>Pipes</h2>
+
+{{ date() | date : "short" }}
+
+{{ "renan" | uppercase }}
+
+{{ "RENAN" | lowercase }}
+
+{{ json() | json }}
+
+{{ loadingData$ | async }}
+
+{{ 200.5 | currency : "BRL" }}
+
+{{ 2000.554 | number : "1.0-2" }}
+
+{{ 2.5 | percent }}
+
+{{ "teste Teste" | customString : "upper" }}

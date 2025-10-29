@@ -7,6 +7,7 @@ import { TemplateFlowComponent } from './components/template/template-flow/templ
 import { TemplateDeferrableViewsComponent } from './components/template/template-deferrable-views/template-deferrable-views.component';
 import { SignalsComponent } from './components/signals/signals.component';
 import { PaiOuMaeComponent } from './components/comunicacao-entre-components/pai-ou-mae/pai-ou-mae.component';
+import { AngularPipesComponent } from './components/pipes/angular-pipes/angular-pipes.component';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ import { PaiOuMaeComponent } from './components/comunicacao-entre-components/pai
     <!-- <app-template-flow/> -->
     <!-- <app-template-deferrable-views /> -->
     <!-- <app-signals> </app-signals> -->
-    <app-pai-ou-mae />
+    <!-- <app-pai-ou-mae /> -->
+    <app-angular-pipes />
   `,
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { PaiOuMaeComponent } from './components/comunicacao-entre-components/pai
     TemplateDeferrableViewsComponent,
     SignalsComponent,
     PaiOuMaeComponent,
+    AngularPipesComponent,
   ],
 })
 export class AppComponent {
